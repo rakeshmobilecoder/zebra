@@ -3,6 +3,7 @@
 
 <!-- page start here -->
 <section class="login_section pt-5 pb-5">
+
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-sm-6">
@@ -13,7 +14,7 @@
 		</div>
 	</div>
 	<div class="container-fluid px-sm-4">
-		<form id="msform">
+	<div id="msform">
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="progress_main text-center text-white">
@@ -34,8 +35,12 @@
 			</div>        
         </div>
     </div>
-                <!-- fieldsets -->
+
+                <!-- Form step one -->
         <fieldset>
+        	<form id="reg_form_step1" name="reg_form_step1" method="POST">
+        		<input type="hidden" name="step" value="1"/>
+        		<input type="hidden" name="_token" value="csrf_token()"/>
 			<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -53,7 +58,7 @@
 				<div class="col-md-4">
 					<div class="form-group">
 					    <label for="id_type">ID Type</label>
-			            <select class="form-control select bg-transparent rounded-0 input_border" id="id_type">
+			            <select class="form-control select bg-transparent rounded-0 input_border" id="id_type" name="id_type">
 							<option>Driving Licence</option>
 							<option>2</option>
 							<option>3</option>
@@ -65,25 +70,25 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="id_number">ID Number</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="id_number" placeholder="20130003768">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="id_number" placeholder="20130003768" name="id_number">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="date_of_issue">Date of Issue</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_issue" placeholder="25-09-2014">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_issue" placeholder="25-09-2014" name="date_of_issue">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="expired_date">Expired Date</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="expired_date" placeholder="25-09-2032">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="expired_date" placeholder="25-09-2032" name="expried_date">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="place_of_issue">Place of Issue</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_issue" placeholder="Delhi">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_issue" placeholder="Delhi" name="place_of_issue">
 					  </div>
 				</div>
 			</div>
@@ -98,35 +103,35 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="first_name">First Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="first_name" placeholder="Jhon">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="first_name" placeholder="Jhon" name="first_name">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="middle_name">Middle Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="middle_name" placeholder="Andrew">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="middle_name" placeholder="Andrew" name="middle_name">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="family_name">Family Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="family_name" placeholder="Brown">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="family_name" placeholder="Brown" name="family_name">
 					  </div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 					    <label for="gender">Gender</label>
-			            <select class="form-control select bg-transparent rounded-0 input_border" id="gender">
-							<option>Male</option>
-							<option>Female</option>
-							<option>Others</option>							
+			            <select class="form-control select bg-transparent rounded-0 input_border" id="gender" name="gender">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Others">Others</option>							
 						</select>
 					</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="place_of_birth">Place of Birth</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_birth" placeholder="Nodia">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_birth" placeholder="Nodia" name="place_of_birth">
 					  </div>
 				</div>
 				<div class="col-md-4">					
@@ -138,25 +143,25 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Fiscal_Code">Fiscal Code</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Fiscal_Code" placeholder="FDSFFSDF5558">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Fiscal_Code" placeholder="FDSFFSDF5558" name="fiscal_code">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="nation">Nation</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="nation" placeholder="India">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="nation" placeholder="India" name="nation">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="email">Email</label>
-					    <input type="email" class="form-control bg-transparent rounded-0 input_border" id="email" placeholder="jhon@gmail.com">
+					    <input type="email" class="form-control bg-transparent rounded-0 input_border" id="email" placeholder="jhon@gmail.com" name="email">
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="phone_number">Phone Number</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="phone_number" placeholder="+91 9999000011">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="phone_number" placeholder="+91 9999000011" name="phone_number">
 					  </div>
 				</div>
 				<div class="col-md-4">					
@@ -168,7 +173,7 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="address">Address</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="address" placeholder="Sec-16 Noida, (UP) INDIA">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="address" placeholder="Sec-16 Noida, (UP) INDIA" name="fixed_phone">
 				  	</div>
 				</div>
 				<div class="col-md-4">					
@@ -180,25 +185,25 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="zip_code">Postal Zip Code</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="zip_code" placeholder="201308">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="zip_code" placeholder="201308"name="city">
 				  	</div>
 				</div>				
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Province">Province</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Province" placeholder="Gautam Budh Nagar">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Province" placeholder="Gautam Budh Nagar" name="province">
 				  	</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Municipality">Municipality</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Municipality" placeholder="Enter Municipality">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Municipality" placeholder="Enter Municipality" name="municipality">
 				  	</div>
 				</div>
 				<div class="col-md-8">					
 					<div class="form-group">
 					    <label for="code_sdi">Codice SDI/Email PEC</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="code_sdi" placeholder="example.italian@gmail.com">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="code_sdi" placeholder="example.italian@gmail.com" name="codeice_email">
 				  	</div>
 				</div>
 			</div>
@@ -213,25 +218,30 @@
 				<div class="col-md-4">					
 					<div class="form-group fz18 mb-4 position-relative">
 	                    <label for="your_password">Your Password</label>
-	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="your_password" placeholder="Enter Your Password">
+	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="your_password" placeholder="Enter Your Password" name="password">
 	                    <i class="fa fa-eye toggle-password" toggle="#your_password" aria-hidden="true"></i>
 	                  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group fz18 mb-4 position-relative">
 	                    <label for="confirm_password">Confirm Password</label>
-	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="confirm_password" placeholder="Enter Your Password">
+	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="confirm_password" placeholder="Enter Your Password" name="cpassword">
 	                    <i class="fa fa-eye toggle-password" toggle="#confirm_password"aria-hidden="true"></i>
 	                  </div>
 				</div>
 			</div>
             <div class="row my-5 justify-content-center text-center">
             	<button class="btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn">Cancel</button>
-	            <input type="button" name="next" 
-	            class="next action-button btn text-center fz18 text-uppercase login_btn" value="Save & Proceed" />
+	            <input type="submit" name="next" 
+	            class="next action-button btn text-center fz18 text-uppercase login_btn save_and_proceed" value="Save & Proceed" />
 	        </div>
+	        </form>
         </fieldset>
+    
+         <!-- Form step two -->
         <fieldset>
+        	<form id="reg_form_step2" name="reg_form_step2">
+        		<input type="hidden" name="step" value="2"/>
         	<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -254,7 +264,7 @@
 										<label for="photo--upload" class="btn browse_btn fz20">BROWSE</label>										
 										<button class="delete_photo fz20">Delete Photo</button>
 									</div>									
-									<input type="file" name="image" id="photo--upload" onchange="readURL(this,'Profile4')" class="d-none">
+									<input type="file" name="picture" id="photo--upload" onchange="readURL(this,'Profile4')" class="d-none">
 									<span class="file_name">john-photo.jpg</span>
 								</div>
 							</div>
@@ -267,9 +277,13 @@
 				<input type="button" name="previous" class="previous action-button btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn" value="Back" />
 				<input type="button" name="next" class="next action-button btn text-center fz18 text-uppercase login_btn" value="Save & Proceed" />
 			</div>
-                        
+        </form>                
         </fieldset>
+    
+        <!-- Form step three -->
         <fieldset>
+        	<form id="reg_form_step3" name="reg_form_step3" method="POST">
+        		<input type="hidden" name="step" value="3"/>
         	<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -295,7 +309,7 @@
 										<label for="photo--upload" class="btn browse_btn fz20">BROWSE</label>										
 										<button class="delete_photo fz20">Delete Photo</button>
 									</div>									
-									<input type="file" name="image" id="photo--upload" onchange="readURL(this,'Profile4')" class="d-none">
+									<input type="file" name="id_picture_front" id="photo--upload" onchange="readURL(this,'Profile4')" class="d-none">
 									
 								</div>
 							</div>
@@ -318,7 +332,7 @@
 										<label for="photo--upload5" class="btn browse_btn fz20">BROWSE</label>										
 										<button class="delete_photo fz20">Delete Photo</button>
 									</div>									
-									<input type="file" name="image" id="photo--upload5" onchange="readURL(this,'Profile5')" class="d-none">
+									<input type="file" name="id_picture_back" id="photo--upload5" onchange="readURL(this,'Profile5')" class="d-none">
 									
 								</div>
 							</div>
@@ -331,9 +345,14 @@
     		<div class="row my-5 justify-content-center text-center">
 				<input type="button" name="previous" class="previous action-button btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn" value="Back" />
 				<input type="button" name="next" class="next action-button btn text-center fz18 text-uppercase login_btn" value="Save & Proceed" />
-			</div>            
+			</div>
+			</form>            
         </fieldset>
+   
+    <!-- Form step four -->
         <fieldset>
+        	<form id="reg_form_step4" name="reg_form_step4" method="POST">
+        		<input type="hidden" name="step" value="4"/>
         	<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -361,29 +380,29 @@
 				<div class="col-md-7 signature_customer">
 					<div class="customer_signature mt-4">
 					<h3 class="fz22 border-bottom border-secondary pb-3 text-center">Customer signature</h3>
-					<div class="cust_photograph border-0 px-0">
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="cust_photograph_photo mb-4 mb-sm-0">
-									<img src="images/signature.png" class="img-fluid w-100" alt="" id="Profile8" width="50%" height="50%">
+						<div class="cust_photograph border-0 px-0">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="cust_photograph_photo mb-4 mb-sm-0">
+										<img src="images/signature.png" class="img-fluid w-100" alt="" id="Profile8" width="50%" height="50%">
+									</div>
 								</div>
-							</div>
-							<div class="col-sm-8">
-								<div class="cust_photograph--field">
-									<h3 class="fz20">Upload your photo signature</h3>
-									<div class="d-flex mt-4 mb-3">
-										<label for="photo--upload-8" class="btn browse_btn fz20">BROWSE</label>										
-										<button class="delete_photo fz20">Delete Photo</button>
-									</div>									
-									<input type="file" name="image" id="photo--upload-8" onchange="readURL(this,'Profile8')" class="d-none">
-									<span class="file_name">Signature-Photo.jpg</span>
+								<div class="col-sm-8">
+									<div class="cust_photograph--field">
+										<h3 class="fz20">Upload your photo signature</h3>
+										<div class="d-flex mt-4 mb-3">
+											<label for="photo--upload-8" class="btn browse_btn fz20">BROWSE</label>										
+											<button class="delete_photo fz20">Delete Photo</button>
+										</div>									
+										<input type="file" name="signature_picture" id="photo--upload-8" onchange="readURL(this,'Profile8')" class="d-none">
+										<span class="file_name">Signature-Photo.jpg</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
     			
     		
     		<!-- ./ Forms Filed -->
@@ -391,8 +410,13 @@
 				<input type="button" name="previous" class="previous action-button btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn" value="Back" />
 				<input type="button" name="next" class="next action-button btn text-center fz18 text-uppercase login_btn" value="Save & Proceed" />
 			</div> 
+          </form>
 		</fieldset>
+	
+	 <!-- Form step five -->
 		<fieldset>
+			<form id="reg_form_step5" name="reg_form_step5" method="POST">
+				<input type="hidden" name="step" value="5"/>
 			<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -439,7 +463,7 @@
 					  	<p>Please enter the details of your Device</p>
 					  	<div class="form-group">
   						    <label for="device_details">Your Device Details</label>
-    					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="device_details" placeholder="345689NBCD">
+    					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="device_details" placeholder="345689NBCD" name="device_name">
     					    <small class="text-danger">Your device details is wrong. Please check</small>
 					  	</div>
 					  	<button class="btn login_btn">Add</button>
@@ -450,9 +474,13 @@
 			<!-- ./ Forms Filed -->    		<div class="row my-5 justify-content-center text-center">
 				<input type="button" name="previous" class="previous action-button btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn" value="Back" />
 				<input type="button" name="next" class="next action-button btn text-center fz18 text-uppercase login_btn" value="Save & Proceed" />
-			</div> 
+			</div>
+			</form> 
 		</fieldset>
+	<!-- Form step Six -->
         <fieldset>
+        	<form id="reg_form_step6" name="reg_form_step6" method="POST">
+        	<input type="hidden" name="step" value="6"/>
             <div class="row justify-content-center">
             	<!-- Step Six Heading -->
         		<div class="col-7 mb-4">
@@ -524,7 +552,7 @@
 							    		<div class="signature_upload attachments_pic position-relative">
 								    		<img src="images/upload_img.png" class="img-fluid w-100">
 								    		<label for="upload_doc">Upload Doucment</label>
-								    		<input type="file" id="upload_doc" class="d-none">
+								    		<input type="file" id="upload_doc" class="d-none" name="upload_doc">
 								    	</div>
 							    		<p>Upload</p>
 							    	</div>
@@ -595,8 +623,9 @@
                 <input type="submit" name="submit" id="submit" class="submit action-button btn text-center fz18 text-uppercase login_btn" value="Save on Device" />
             </div>
         </div>
+        </form>
           </fieldset>
-      </form>
+      </div>
 	</div>
 </section>
 

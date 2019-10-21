@@ -39,8 +39,11 @@ Route::group(['middleware' => 'checkauth'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashborad');
 });
 
+Route::get('/forgotpassword', 'LoginController@showforgotPassword')->name('forgotpassword');
 Route::get('/resetpassword/{id}', 'API\V1\LoginController@resetLink')->name('resetlink');
 Route::post('/resetpassword', 'API\V1\LoginController@resetPassword')->name('resetPassword');
+Route::post('/save_and_proceed', 'RegisterController@saveandProceed')->name('save_and_proceed');
+
 
 
 

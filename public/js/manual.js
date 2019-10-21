@@ -107,8 +107,37 @@ jQuery().ready(function() {
         jQuery('.drop-down ul li').slideToggle();        
         jQuery('.drop-down ul').toggleClass('ul-border');       
     });
-    
-    //jQuery('.drop-down ul').css({'border':'0'+'px'});
-    /* End */
 });
+
+  $('input[type="radio"]').click(function(){
+        var inputValue = $(this).attr("value");
+        var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide(); 
+        $('.send_otp').removeAttr('disabled');               
+        $('.otp_form').hide();
+        $(targetBox).show();
+
+
+    });
+
+// Check Phone Number is Right or Wrong
+ $cf = $('#phone_number');
+    $cf.blur(function(e){
+        phone = $(this).val();
+        phone = phone.replace(/[^0-9]/g,'');
+        if (phone.length != 10)
+        {            
+            $('.fa-check-circle').hide();
+              $("<i class='fa fa-times-circle' aria-hidden='true'></i>").insertAfter(this);
+        
+        } else {
+          $('.fa-times-circle').hide();
+          $("<i class='fa fa-check-circle' aria-hidden='true'></i>").insertAfter(this);
+        }
+    });
+  
+  $('.send_otp').click(function(){
+    this.disabled = true;
+    $('.otp_form').show();
+  });
 /* smooth scroll starts here */

@@ -193,4 +193,10 @@ class RegisterController extends Controller
         $image->move($destinationPath, $filename);
         return $filename;
     }
+
+
+    public function saveandProceed(Request $request){
+    	print_r($request->all());
+
+    }
 }

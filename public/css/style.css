@@ -18,7 +18,11 @@ a:hover {
 }
 
 body{font-family: 'swis721_btroman';overflow-x: hidden; background: #000;}
-
+h1,h2,h3,h4,h5,h6{
+  font-family: 'swis721_btbold';
+}
+.navbar-nav a{font-family: 'swis721_btbold';}
+.card-header{font-family: 'swis721_btbold';}
 .base_color{color: #3478b6;}
 .base_light_color{color: #808080;}
 
@@ -31,6 +35,11 @@ body{font-family: 'swis721_btroman';overflow-x: hidden; background: #000;}
 .login_form .fa-eye,
 .login_form .fa-eye-slash{position: absolute; color: #3478b6; right: 23px; bottom: 19px; font-size: 22px;}
 
+.login_form .fa-check-circle,
+.login_form .fa-times-circle{
+  position: absolute; right: 23px; bottom: 19px; font-size: 22px;}
+.login_form .fa-check-circle{color: green;}
+.login_form .fa-times-circle{ color: red; }
 .custom_checkbox .checkbox_label {
   display: block;
   position: relative;
@@ -316,8 +325,7 @@ body{font-family: 'swis721_btroman';overflow-x: hidden; background: #000;}
  position: relative;  
  display: inline-block;    
  width: auto;       
- margin-top: 0;   
- font-family: verdana;    
+ margin-top: 0;    
  }      
  .drop-down .button{
     display: flex;
@@ -329,6 +337,7 @@ body{font-family: 'swis721_btroman';overflow-x: hidden; background: #000;}
     background-repeat: no-repeat;
     text-align: center;
     background-position-y: center;
+    font-family: 'swis721_btbold';
  }
  .drop-down select {   
  display: none;    
@@ -386,4 +395,23 @@ body{font-family: 'swis721_btroman';overflow-x: hidden; background: #000;}
 }
 .all_details li span{
   padding-left: 0px;
+}
+.box{  
+  display: none;  
+}
+.forget_password_form .login_btn{
+    min-width: 249.5px;
+}
+.otp_form{display: none; padding:0;}
+.send_otp:disabled {
+  background: #FFFFFF;
+  color: #3478B6;
+}
+.resend_code:focus{
+  outline: 0;
+}
+.resend_code{
+  color: #3478b6;
+  font-style: italic;
+  cursor: pointer;
 }

@@ -15,6 +15,7 @@ class UserDetails extends Model
         'middle_name',
         'family_name',
 		'gender',
+        'place_of_birth',
         'fiscal_code',
         'nation',
         'phone_number',
@@ -30,7 +31,10 @@ class UserDetails extends Model
         'signature_picture',
         'id_picture_front',
         'id_picture_back',
-        'picture'
+        'picture',
+        'business_name',
+        'vat_id',        
+        'place_of_issue',
     ];
 
 
@@ -39,7 +43,7 @@ class UserDetails extends Model
      *
      * @var array
      */
-    protected $hidden = [
+    /*protected $hidden = [
         'business_name',
         'vat_id',        
         'id_type',
@@ -47,7 +51,7 @@ class UserDetails extends Model
         'date_of_issue',
         'expried_date',
         'place_of_issue',
-        'place_of_birth'
-    ];
+        
+    ];*/
 
 }

@@ -17,7 +17,6 @@ class LoginController extends Controller
 {
 	//****** LOGIN FUNCTIONALITY START HERE*********************
     public function login(Request $request){
-    	//this is testing
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
             'password'=> 'required'
@@ -37,7 +36,7 @@ class LoginController extends Controller
 
         }
 
-        $credentials = $request->only('email', 'password');
+         $credentials = $request->only('email', 'password');
         
             if (Auth::attempt($credentials)) {
             	$user = Auth::user();
@@ -46,7 +45,11 @@ class LoginController extends Controller
             	return view('home',['userData'=>$userData]);
                 
             }else{
-            	return Redirect::back()->withErrors(['errors', 'Invalid credentials']);
+            	return redirect()->back()
+                 ->withInput($request->only( $request->input("email")))
+                ->withErrors([
+                'email' => "Invalid email or password.",
+            ]);
             }
 		
         
@@ -316,5 +319,11 @@ public function resetLink($id){
 			  return redirect()->back()->with('message', 'Password reset successfully.');
 		    }
 		  
+	}
+
+	public function showforgotPassword(Request $request){
+
+		return view('forget_password');
+
 	}
 }

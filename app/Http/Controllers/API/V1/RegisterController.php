@@ -23,9 +23,10 @@ class RegisterController extends Controller
     }
     
     public function register(Request $request){
+
         try {
             $allDatas=$request->all();
-            
+
             // $data = $allDatas;
             // $dataList = json_decode($allDatas['form_data'],true);
             // $dataLists = json_decode(json_encode($dataList['Slide1']));            
@@ -68,10 +69,12 @@ class RegisterController extends Controller
                 return response()->json($responseObject,Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
+
+            
             $user = User::create([
                 'email' => $allDatas['email'],
                 'password' => bcrypt($allDatas['password']),
-                'user_type' => isset($allDatas['user_type'])?$allDatas['user_type']:""
+                'user_type' => $allDatas['user_type']//isset($allDatas['user_type'])?$allDatas['user_type']:""
             ]);
 
             $user_id = $user->id;

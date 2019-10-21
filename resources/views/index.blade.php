@@ -28,7 +28,7 @@
                       <input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
-                    <i class="float-right">Forgot Password?</i>
+                    <a href="{{ route('forgotpassword') }}"><i class="float-right">Forgot Password?</i></a>
                   </div>
                   <div class="text-center mt-5 mb-5">
                     <button type="submit" class="btn text-center fz18 text-uppercase login_btn">Sign in</button>

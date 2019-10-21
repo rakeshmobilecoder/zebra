@@ -6,5 +6,6 @@
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>     
     <script src="{{ asset('js/manual.js') }}"></script>
     <script src="{{ asset('js/forms-script.js') }}"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
   </body>
 </html>
