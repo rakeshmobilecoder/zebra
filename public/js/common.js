@@ -2,41 +2,44 @@
  //-----------------------------------PERSONEL REGISTRATION FUNCTIONALITY START HERE-----------------------------------///
 //---------------------------------------------------------------------------------------------------------///
 
-/* jQuery('.save_and_proceed').click(function(e){
-	
-               e.preventDefault();
+ $('form .save_and_proceed').on('click', function(event) {
+	          var myid= this.id;
+			  console.log(myid+"==============");
+	          event.preventDefault();
+		       var formData = jQuery('#reg_form_step1').serializeArray();
                jQuery.ajax({
-                  url: '/save_and_proceed',
-                  method: 'post',
-                  data: {
-                     email: jQuery('#agency_email').val(),
-                     password: jQuery('#agency_pwd').val(),
-                     "_token": jQuery('#csrf_token').val(),
-                   },
+                  url: 'save_and_proceed',
+                  method: 'POST',
+                  data: formData,
+				  cache : false,
                   success: function(result){
-                    if($.isEmptyObject(result.errors)){
-                        window.location.href ="/agent_profile";
-                    }else{
-                        printErrorMsg(result.errors);
-                    } 
-
-
-                }});
-    }); */
+					  //console.log(result);
+					  if(result.success== false){
+						  $.each(result.errors, function( key, value){
+							$("#" + key + "_error").text(value[0]);
+							
+						  })
+						  
+					  }
+                    
+				
+				} 
+            }); 
+ });
 
     // Ajax for our form
-        $('form.save_and_proceed').on('submit', function(event) {
+        /* $('form.save_and_proceed').on('submit', function(event) {
             event.preventDefault();
 
             var formData = $(this).serialize(); 
             var formAction = "/save_and_proceed"; 
             var formMethod = "POST"; 
 
-            $.ajaxSetup({
+          $.ajaxSetup({
                 headers: {
                     'X-XSRF-Token': $('meta[name="_token"]').attr('content')
                 }
-            });
+            }); 
 
             $.ajax({
                 type  : formMethod,
@@ -60,4 +63,4 @@
             console.log(formData);
 
             return false; 
-        });
+        }); */

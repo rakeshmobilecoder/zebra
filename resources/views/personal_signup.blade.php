@@ -35,12 +35,17 @@
 			</div>        
         </div>
     </div>
+    <?php if (Session::has('reg_step_1')){
+      $reg_step_1_data = Session::get('reg_step_1') ; 
+     
+      } 
+    ?>
 
                 <!-- Form step one -->
         <fieldset>
-        	<form id="reg_form_step1" name="reg_form_step1" method="POST">
+        	<form id="reg_form_step1" name="reg_form_step1">
         		<input type="hidden" name="step" value="1"/>
-        		<input type="hidden" name="_token" value="csrf_token()"/>
+        		<input id="register_toekn" type="hidden" name="_token" value="{{ csrf_token() }}"/>
 			<div class="row justify-content-center">
         		<div class="col-7 mb-4">
         			<h3 class="fz24 text-center text-white">Register for Personal</h3>
@@ -59,36 +64,43 @@
 					<div class="form-group">
 					    <label for="id_type">ID Type</label>
 			            <select class="form-control select bg-transparent rounded-0 input_border" id="id_type" name="id_type">
-							<option>Driving Licence</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<option value="">Driving Licence</option>
+							<option value="2" <?php echo $reg_step_1_data['id_type']==2?'selected':'' ?> >2</option>
+							<option value="3" <?php echo $reg_step_1_data['id_type']==3?'selected':'' ?> >3</option>
+							<option value="4" <?php echo $reg_step_1_data['id_type']==4?'selected':'' ?> >4</option>
+							<option value="5" <?php echo $reg_step_1_data['id_type']==5?'selected':'' ?> >5</option>
 						</select>
+					<div id="id_type_error" style="color:red"></div>
 					</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="id_number">ID Number</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="id_number" placeholder="20130003768" name="id_number">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="id_number" placeholder="20130003768" name="id_number" value="<?php echo $reg_step_1_data['id_number']; ?>">
+					    <div id="id_number_error" style="color:red"></div>
+					    
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="date_of_issue">Date of Issue</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_issue" placeholder="25-09-2014" name="date_of_issue">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_issue" placeholder="25-09-2014" name="date_of_issue" value="<?php echo $reg_step_1_data['date_of_issue']; ?>">
+					    <div id="date_of_issue_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="expired_date">Expired Date</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="expired_date" placeholder="25-09-2032" name="expried_date">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="expired_date" placeholder="25-09-2032" name="expired_date" value="<?php echo $reg_step_1_data['expired_date']; ?>">
+					    <div id="expired_date_error" style="color:red"></div>
+
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="place_of_issue">Place of Issue</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_issue" placeholder="Delhi" name="place_of_issue">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_issue" placeholder="Delhi" name="place_of_issue" value="<?php echo $reg_step_1_data['place_of_issue']; ?>">
+					    <div id="place_of_issue_error" style="color:red"></div>
 					  </div>
 				</div>
 			</div>
@@ -103,19 +115,22 @@
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="first_name">First Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="first_name" placeholder="Jhon" name="first_name">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="first_name" placeholder="Jhon" name="first_name" value="<?php echo $reg_step_1_data['first_name']; ?>">
+                          <div id="first_name_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="middle_name">Middle Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="middle_name" placeholder="Andrew" name="middle_name">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="middle_name" placeholder="Andrew" name="middle_name" value="<?php echo $reg_step_1_data['middle_name']; ?>">
+					    <div id="middle_name_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="family_name">Family Name</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="family_name" placeholder="Brown" name="family_name">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="family_name" placeholder="Brown" name="family_name" value="<?php echo $reg_step_1_data['family_name']; ?>">
+
 					  </div>
 				</div>
 				<div class="col-md-4">
@@ -126,84 +141,98 @@
 							<option value="Female">Female</option>
 							<option value="Others">Others</option>							
 						</select>
+						<div id="gender" style="color:red"></div>
 					</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="place_of_birth">Place of Birth</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_birth" placeholder="Nodia" name="place_of_birth">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="place_of_birth" placeholder="Nodia" name="place_of_birth" value="<?php echo $reg_step_1_data['place_of_birth']; ?>">
+					    <div id="place_of_birth_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="date_of_birth">Date of Birth</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_birth" placeholder="25-09-2014">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border datepicker_input" id="date_of_birth" placeholder="25-09-2014" name="date_of_birth" value="<?php echo $reg_step_1_data['date_of_birth']; ?>">
+					    <div id="date_of_birth_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Fiscal_Code">Fiscal Code</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Fiscal_Code" placeholder="FDSFFSDF5558" name="fiscal_code">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Fiscal_Code" placeholder="FDSFFSDF5558" name="fiscal_code" value="<?php echo $reg_step_1_data['fiscal_code']; ?>">
+					    <div id="fiscal_code_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="nation">Nation</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="nation" placeholder="India" name="nation">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="nation" placeholder="India" name="nation" value="<?php echo $reg_step_1_data['nation']; ?>">
+					    <div id="nation_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="email">Email</label>
-					    <input type="email" class="form-control bg-transparent rounded-0 input_border" id="email" placeholder="jhon@gmail.com" name="email">
+					    <input type="email" class="form-control bg-transparent rounded-0 input_border" id="email" placeholder="jhon@gmail.com" name="email" value="<?php echo $reg_step_1_data['email']; ?>">
+					    <div id="email_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="phone_number">Phone Number</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="phone_number" placeholder="+91 9999000011" name="phone_number">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="phone_number" placeholder="+91 9999000011" name="phone_number" value="<?php echo $reg_step_1_data['phone_number']; ?>">
+					    <div id="phone_number_error" style="color:red"></div>
 					  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="fixed_phone">Fixed Phone</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="fixed_phone" placeholder="+1 123-456-789">
+					    <input name="fixed_phone" type="text" class="form-control bg-transparent rounded-0 input_border" id="fixed_phone" placeholder="+1 123-456-789" value="<?php echo $reg_step_1_data['fixed_phone']; ?>">
+					    <div id="fixed_phone_error" style="color:red"></div>
 				  	</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="address">Address</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="address" placeholder="Sec-16 Noida, (UP) INDIA" name="fixed_phone">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="address" placeholder="Sec-16 Noida, (UP) INDIA" name="address" value="<?php echo $reg_step_1_data['address']; ?>">
+					    <div id="address_error" style="color:red"></div>
 				  	</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="city">City</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="city" placeholder="Nodia">
+					    <input name="city" type="text" class="form-control bg-transparent rounded-0 input_border" id="city" placeholder="Nodia" value="<?php echo $reg_step_1_data['city']; ?>">
+					    <div id="city_error" style="color:red"></div>
 				  	</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="zip_code">Postal Zip Code</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="zip_code" placeholder="201308"name="city">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="zip_code" placeholder="201308"name="zip_code" value="<?php echo $reg_step_1_data['zip_code']; ?>">
+					 <div id="zip_code_error" style="color:red"></div>
 				  	</div>
 				</div>				
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Province">Province</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Province" placeholder="Gautam Budh Nagar" name="province">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Province" placeholder="Gautam Budh Nagar" name="province" value="<?php echo $reg_step_1_data['province']; ?>">
+					    <div id="province_error" style="color:red"></div>
 				  	</div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group">
 					    <label for="Municipality">Municipality</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Municipality" placeholder="Enter Municipality" name="municipality">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="Municipality" placeholder="Enter Municipality" name="municipality" value="<?php echo $reg_step_1_data['municipality']; ?>">
+					    <div id="municipality_error" style="color:red"></div>
 				  	</div>
 				</div>
 				<div class="col-md-8">					
 					<div class="form-group">
 					    <label for="code_sdi">Codice SDI/Email PEC</label>
-					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="code_sdi" placeholder="example.italian@gmail.com" name="codeice_email">
+					    <input type="text" class="form-control bg-transparent rounded-0 input_border" id="code_sdi" placeholder="example.italian@gmail.com" name="codeice_email" value="<?php echo $reg_step_1_data['codeice_email']; ?>">
+					    <div id="codeice_email_error" style="color:red"></div>
 				  	</div>
 				</div>
 			</div>
@@ -218,21 +247,24 @@
 				<div class="col-md-4">					
 					<div class="form-group fz18 mb-4 position-relative">
 	                    <label for="your_password">Your Password</label>
-	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="your_password" placeholder="Enter Your Password" name="password">
+	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="your_password" placeholder="Enter Your Password" name="password" value="<?php echo $reg_step_1_data['password']; ?>" >
+	                    <div id="password_error" style="color:red"></div>
 	                    <i class="fa fa-eye toggle-password" toggle="#your_password" aria-hidden="true"></i>
 	                  </div>
 				</div>
 				<div class="col-md-4">					
 					<div class="form-group fz18 mb-4 position-relative">
 	                    <label for="confirm_password">Confirm Password</label>
-	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="confirm_password" placeholder="Enter Your Password" name="cpassword">
+	                    <input type="password" class="form-control bg-transparent rounded-0 p-3 pr-5 input_border" id="confirm_password" placeholder="Enter Your Password" name="cpassword" value="<?php echo $reg_step_1_data['cpassword']; ?>">
+	                    <div id="cpassword_error" style="color:red"></div>
 	                    <i class="fa fa-eye toggle-password" toggle="#confirm_password"aria-hidden="true"></i>
+
 	                  </div>
 				</div>
 			</div>
             <div class="row my-5 justify-content-center text-center">
             	<button class="btn text-center fz18 text-uppercase mr-sm-4 mb-4 mb-sm-0 cancel_btn">Cancel</button>
-	            <input type="submit" name="next" 
+	            <input id="step1" type="button" name="next" 
 	            class="next action-button btn text-center fz18 text-uppercase login_btn save_and_proceed" value="Save & Proceed" />
 	        </div>
 	        </form>

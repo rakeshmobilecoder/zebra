@@ -8,8 +8,10 @@ use Validator;
 use App\User;
 use App\UserDetails;
 use App\Devices;
+use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -196,7 +198,50 @@ class RegisterController extends Controller
 
 
     public function saveandProceed(Request $request){
-    	print_r($request->all());
+    	
+		$rules = [ 'first_name'     => 'required',
+		          'email'           => 'required|email',
+		          'id_type'         => 'required',
+		          'id_number'       => 'required',
+		          'date_of_issue'   => 'required',
+		          'expired_date'    => 'required',
+		          'place_of_issue'  => 'required',
+		          'middle_name'     => 'required',
+		          'gender'          => 'required',
+		          'place_of_birth'  => 'required',
+		          'date_of_birth'   => 'required',
+		          'fiscal_code'     => 'required',
+		          'nation'          => 'required',
+		          'phone_number'    => 'required',
+		          'fixed_phone'     => 'required',
+		          'address'         => 'required',
+		          'city'            => 'required',
+		          'zip_code'        => 'required',
+		          'province'        => 'required',
+		          'municipality'    => 'required',
+		          'codeice_email'   => 'required',
+		          'password'        => 'required',
+		          'cpassword'        => 'required',
+		          
 
-    }
+		        ];
+		$validator = Validator::make($request->all(), $rules);
+
+
+		if ($validator->fails())
+		{
+			 
+		    return response()->json([
+		        'success' => false,
+		        'errors' => $validator->getMessageBag()->toArray()
+
+		    ]); 
+		}
+		if($request->step!==""){
+			Session::put('reg_step_'.$request->step, $request->all());
+		}
+		
+		return response()->json(['success' => true, 'data'=>$request->all()], 200);
+
+		    }
 }
